@@ -1,0 +1,33 @@
+.resume{max-width: 800px;margin: 0 auto;}
+.resume > section{margin: 50px 0;}
+.resume > section > h1,
+.resume > section > h2{
+    text-align: center;
+    margin: 10px 0;
+}
+.resume > section > p{
+    text-align: center;
+}
+
+.resume > section.skills > ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.resume > section.skills > ul >li{
+    width: 48%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.resume > section.projects > ol{
+}
+.resume > section.projects > ol  > li{
+    margin: 20px 0;
+}
+.resume > section.projects > ol  > li > header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}

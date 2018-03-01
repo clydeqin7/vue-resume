@@ -1,0 +1,38 @@
+*{margin: 0; padding: 0}
+*, *::before, *::after{box-sizing: border-box}
+a{  text-decoration: none;}
+ol, ul{ list-style: none}
+html{font-size: 18px;}
+button{font: inherit;}
+@media(min-width: 500px){
+    .page{
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        padding: 10px;
+    }
+}
+
+.page > aside{
+    width: 100px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+.page > aside > .upper{
+    flex-grow: 1;
+}
+.page > aside > .upper  li{
+    padding: 5px;
+    text-align: center;
+}
+.page > aside > .down {
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.page > main{
+    border: 1px solid blue;
+    flex-grow: 1;
+    overflow: auto;
+}
