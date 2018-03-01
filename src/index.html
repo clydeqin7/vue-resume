@@ -7,6 +7,7 @@
     <title>Vue简历制作工具</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/resume.css">
+    <link rel="stylesheet" href="./css/editable-span.css">
 </head>
 <body>
     <div class="page" id="app">
@@ -26,13 +27,18 @@
         <main>
             <div class="resume">
                 <section class="profile">
-                    <h1>姓名</h1>
-                    <p>应聘岗位</p>
+                    <editable-span :value="resume.name" @edit="onEdit('name', $event)"></editable-span>
+                    <p>应聘岗位:
+                        <editable-span :value="resume.jobTitle" @edit="onEdit('jobTitle', $event)"></editable-span>
+                    </p>
                     <p>
-                        <span>性别</span>
-                        <span>男</span>
-                        <span>13800138001</span>
-                        <span>email@example.com</span>
+                        <editable-span :value="resume.gender" @edit="onEdit('gender', $event)"></editable-span>
+                        |
+                        <editable-span :value="resume.birthday" @edit="onEdit('birthday', $event)"></editable-span>
+                        |
+                        <editable-span :value="resume.phone" @edit="onEdit('phone', $event)"></editable-span>
+                        |
+                        <editable-span :value="resume.email" @edit="onEdit('email', $event)"></editable-span>
                     </p>
                 </section>
                 <section class="skills">
@@ -103,6 +109,7 @@
 <script src="../vendors/av-min.js"></script>
 <script src="./js/av.js"></script>
 <script src="../vendors/vue.min.js"></script>
+<script src="./js/editable-span.js"></script>
 <script src="./js/app.js"></script>
 </body>
 </html>

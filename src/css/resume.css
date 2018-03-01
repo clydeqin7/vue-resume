@@ -1,7 +1,7 @@
 .resume{max-width: 800px;margin: 0 auto;}
-.resume > section{margin: 50px 0;}
-.resume > section > h1,
-.resume > section > h2{
+.resume > section{margin: 50px 0; text-align: center;}
+.resume > section  h1,
+.resume > section  h2{
     text-align: center;
     margin: 10px 0;
 }
