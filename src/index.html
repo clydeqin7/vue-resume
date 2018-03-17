@@ -14,7 +14,7 @@
         <aside>
             <div class="upper">
                 <ul class="actions">
-                    <li><button>保存</button></li>
+                    <li><button @click="onSaveClick">保存</button></li>
                     <li><button>分享</button></li>
                     <li><button>打印</button></li>
                     <li><button>换肤</button></li>
@@ -105,6 +105,36 @@
                 </section>
             </div>
         </main>
+        <div class="login" v-show="loginVisible">
+            <form action="" class="form" v-show="signInVisible">
+                <h2>登录</h2>
+                <button @click="loginVisible = false">关闭</button>
+                <div class="row">
+                    <label>邮箱</label>
+                    <input type="text">
+                </div>
+                <div class="row">
+                    <label>密码</label>
+                    <input type="password">
+                </div>
+                <button>提交</button>
+                <a href="#" @click="signUpVisible = true; signInVisible = false">注册</a>
+            </form>
+            <form action="" class="form" v-show="signUpVisible">
+                <h2>注册</h2>
+                <button @click="loginVisible = false">关闭</button>
+                <div class="row">
+                    <label>邮箱</label>
+                    <input type="text">
+                </div>
+                <div class="row">
+                    <label>密码</label>
+                    <input type="password">
+                </div>
+                <button>提交</button>
+                <a href="#"  @click="signUpVisible = false; signInVisible = true">登录</a>
+            </form>      
+        </div>
     </div>
 <script src="../vendors/av-min.js"></script>
 <script src="./js/av.js"></script>
