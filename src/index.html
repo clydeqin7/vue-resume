@@ -27,7 +27,9 @@
         <main>
             <div class="resume">
                 <section class="profile">
-                    <editable-span :value="resume.name" @edit="onEdit('name', $event)"></editable-span>
+                    <h1>
+                        <editable-span :value="resume.name" @edit="onEdit('name', $event)"></editable-span>
+                    </h1>
                     <p>应聘岗位:
                         <editable-span :value="resume.jobTitle" @edit="onEdit('jobTitle', $event)"></editable-span>
                     </p>

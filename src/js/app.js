@@ -6,8 +6,8 @@ var app = new Vue({
         signUpVisible: false,
         loginVisible: false,
         currentUser: {
-        id: undefined,
-        email: '',
+            id: undefined,
+            email: '',
         },        
         resume:{
             name: '姓名1',
@@ -26,6 +26,11 @@ var app = new Vue({
             password: '',
         }
     },
+    watch: {
+       'currentUser.id' : function(val, oldVal){
+           this.getResume(val)
+       },
+    },
     methods:{
         onEdit(key, value){
             this.resume[key] = value
@@ -40,6 +45,14 @@ var app = new Vue({
             else {
                 this.showLogin()
             }
+        },
+        getResume(objectId){
+            var query = new AV.Query('User');
+            query.get(objectId).then( (user) =>{
+                Object.assign(this.resume, user.attributes.resume)
+            }, function (error) {
+                // 异常处理
+            });            
         },
         saveResume(){
             // 第一个参数是 className，第二个参数是 objectId
@@ -56,8 +69,8 @@ var app = new Vue({
         },
         onLogout(){
             AV.User.logOut()
-            this.currentUser.id = null
-            console.log('注销成功')
+            this.currentUser.id = undefined
+            alert('注销成功')
         },
         onSignIn(){
             AV.User.logIn(this.signIn.email, this.signIn.password).then((loginedUser) => {
@@ -91,4 +104,10 @@ var app = new Vue({
         }
     }
 })
+
+let currentUser = AV.User.current()
+if (currentUser) {
+    app.currentUser.id = currentUser.id
+    app.getResume(app.currentUser.id)
+}
 
