@@ -16,6 +16,12 @@ var app = new Vue({
             phone: '13800138001',
             email: 'email@example.com',
             jobTitle: '前端工程师',
+            skills: [
+                {name:'技能名称', description: '技能具体描述'},
+                {name:'技能名称', description: '技能具体描述'},            
+                {name:'技能名称', description: '技能具体描述'},
+                {name:'技能名称', description: '技能具体描述'},
+            ]
         },
         signIn: {
             email: '',
@@ -32,8 +38,26 @@ var app = new Vue({
        },
     },
     methods:{
+        addSkill(){
+            this.resume.skills.push({name:'技能名称', description: '技能具体描述'})
+        },
+        removeSkill(index){
+            this.resume.skills.splice(index, 1)
+        },
         onEdit(key, value){
-            this.resume[key] = value
+            let regex = /\[(\d+)\]/g
+            key = key.replace(regex, (match, number) => `.${number}`)
+            // key = skills.0.name
+            console.log(key)
+            keys = key.split('.')
+            let result = this.resume
+            for (let i = 0; i < keys.length; i++) {
+                if (i === keys.length - 1) {
+                    result[keys[i]] = value
+                } else {
+                    result = result[keys[i]]
+                }
+            }            
         },
         onSaveClick(){
             // TODO: 页面最开始加载时是否判断用户登录了的
