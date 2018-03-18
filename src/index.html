@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <div class="down">
-                <span>登出</span>
+                <span v-show="currentUser.id" @click="onLogout">登出</span>
             </div>
         </aside>
         <main>
@@ -106,32 +106,32 @@
             </div>
         </main>
         <div class="login" v-show="loginVisible">
-            <form action="" class="form" v-show="signInVisible">
+            <form action="" class="form" v-show="signInVisible" @submit.prevent="onSignIn">
                 <h2>登录</h2>
                 <button @click="loginVisible = false">关闭</button>
                 <div class="row">
                     <label>邮箱</label>
-                    <input type="text">
+                    <input type="text" v-model="signIn.email">
                 </div>
                 <div class="row">
                     <label>密码</label>
-                    <input type="password">
+                    <input type="password" v-model="signIn.password">
                 </div>
-                <button>提交</button>
+                <button type="submit">提交</button>
                 <a href="#" @click="signUpVisible = true; signInVisible = false">注册</a>
             </form>
-            <form action="" class="form" v-show="signUpVisible">
+            <form action="" class="form" v-show="signUpVisible" @submit.prevent="onSignUp">
                 <h2>注册</h2>
                 <button @click="loginVisible = false">关闭</button>
                 <div class="row">
                     <label>邮箱</label>
-                    <input type="text">
+                    <input type="text" v-model="signUp.email">
                 </div>
                 <div class="row">
                     <label>密码</label>
-                    <input type="password">
+                    <input type="password" v-model="signUp.password">
                 </div>
-                <button>提交</button>
+                <button type="submit">提交</button>
                 <a href="#"  @click="signUpVisible = false; signInVisible = true">登录</a>
             </form>      
         </div>
