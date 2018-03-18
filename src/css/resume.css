@@ -39,4 +39,14 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    position: relative;
+}
+
+.resume > section.projects > ol  > li > header > .removeProject{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+.resume > section.projects > ol  > li > header > .start{
+
 }

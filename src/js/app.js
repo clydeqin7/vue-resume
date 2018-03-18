@@ -21,6 +21,10 @@ var app = new Vue({
                 {name:'技能名称', description: '技能具体描述'},            
                 {name:'技能名称', description: '技能具体描述'},
                 {name:'技能名称', description: '技能具体描述'},
+            ],
+            projects: [
+                {name: '请填写项目名称', link: 'http://...', keywords: '请填写关键词', description: '请详细描述'},
+                {name: '请填写项目名称', link: 'http://...', keywords: '请填写关键词', description: '请详细描述'},
             ]
         },
         signIn: {
@@ -38,6 +42,14 @@ var app = new Vue({
        },
     },
     methods:{
+        removeProject(index){
+            this.resume.projects.splice(index, 1)
+        },
+        addProject(){
+            this.resume.projects.push(
+                {name: '请填写项目名称', link: 'http://...', keywords: '请填写关键词', description: '请详细描述'},
+            )            
+        },
         addSkill(){
             this.resume.skills.push({name:'技能名称', description: '技能具体描述'})
         },
@@ -48,7 +60,6 @@ var app = new Vue({
             let regex = /\[(\d+)\]/g
             key = key.replace(regex, (match, number) => `.${number}`)
             // key = skills.0.name
-            console.log(key)
             keys = key.split('.')
             let result = this.resume
             for (let i = 0; i < keys.length; i++) {
