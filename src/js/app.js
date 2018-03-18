@@ -31,7 +31,7 @@ var app = new Vue({
             this.resume[key] = value
         },
         onSaveClick(){
-            // TODO: 页面加载时是否判断用户登录了的
+            // TODO: 页面最开始加载时是否判断用户登录了的
             let currentUser = AV.User.current()
             if (currentUser) {
                 this.currentUser.id = currentUser.id

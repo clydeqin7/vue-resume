@@ -20,7 +20,7 @@
                     <li><button>换肤</button></li>
                 </ul>
             </div>
-            <div class="down">
+            <div class="down" v-cloak>
                 <span v-show="currentUser.id" @click="onLogout">登出</span>
             </div>
         </aside>
@@ -105,7 +105,7 @@
                 </section>
             </div>
         </main>
-        <div class="login" v-show="loginVisible">
+        <div class="login" v-show="loginVisible" v-cloak>
             <form action="" class="form" v-show="signInVisible" @submit.prevent="onSignIn">
                 <h2>登录</h2>
                 <button @click="loginVisible = false">关闭</button>
