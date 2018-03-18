@@ -35,10 +35,21 @@ var app = new Vue({
             let currentUser = AV.User.current()
             if (currentUser) {
                 this.currentUser.id = currentUser.id
+                this.saveResume()
             }
             else {
                 this.showLogin()
             }
+        },
+        saveResume(){
+            // 第一个参数是 className，第二个参数是 objectId
+            var user = AV.Object.createWithoutData('User', this.currentUser.id);
+            // 修改属性
+            user.set('resume', this.resume);
+            // 保存到云端
+            user.save().then(e=>{
+                alert('保存简历成功')
+            });
         },
         showLogin(){
             this.loginVisible = true
