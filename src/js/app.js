@@ -57,6 +57,7 @@ var app = new Vue({
         onLogout(){
             AV.User.logOut()
             this.currentUser.id = null
+            console.log('注销成功')
         },
         onSignIn(){
             AV.User.logIn(this.signIn.email, this.signIn.password).then((loginedUser) => {
