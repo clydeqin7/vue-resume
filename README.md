@@ -24,3 +24,4 @@
 ## TODO
 
 - 页面最开始进入时的当前用户判断，`AV.User.curret()`默认是存储在Localstorage, 注册后`AV.User.current()` 也是就立即拥有了的
+
