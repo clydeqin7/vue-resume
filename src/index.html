@@ -22,7 +22,7 @@
                 </ul>
             </div>
             <div class="down" v-cloak>
-                <span v-show="currentUser.id" @click="onLogout">登出</span>
+                <span v-show="currentUser.objectId" @click="onLogout">登出</span>
             </div>
         </aside>
         <main>
@@ -120,7 +120,7 @@
                 <a href="#"  @click="signUpVisible = false; signInVisible = true">登录</a>
             </form>      
         </div>
-        <div class="share" v-show="shareVisible">
+        <div class="share" v-show="shareVisible" v-cloak>
             <h2>将下列链接分享给面试官</h2>
             <textarea name="" id="" cols="40" rows="5" readonly resize='none'>{{shareLink}}</textarea>
             <div>

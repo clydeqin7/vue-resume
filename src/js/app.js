@@ -7,9 +7,10 @@ var app = new Vue({
         loginVisible: false,
         shareVisible: false,
         currentUser: {
-            id: undefined,
+            objectId: undefined,
             email: '',
-        },        
+        }, 
+        previewResume: {},       
         resume:{
             name: '姓名1',
             gender: '男',
@@ -39,8 +40,13 @@ var app = new Vue({
         shareLink: '',
     },
     watch: {
-       'currentUser.id' : function(val, oldVal){
-           this.getResume(val)
+       'currentUser.objectId' : function(val, oldVal){
+        if(val){
+            // TODO:监控变化显示简历的优化
+            this.getResume(this.currentUser).then(resume => {
+                this.resume = resume
+            })
+        }
        },
     },
     methods:{
@@ -76,24 +82,23 @@ var app = new Vue({
             // TODO: 页面最开始加载时是否判断用户登录了的
             let currentUser = AV.User.current()
             if (currentUser) {
-                this.currentUser.id = currentUser.id
+                this.currentUser.objectId = currentUser.objectId
                 this.saveResume()
             }
             else {
                 this.showLogin()
             }
         },
-        getResume(objectId){
+        getResume(user){
             var query = new AV.Query('User');
-            query.get(objectId).then( (user) =>{
-                Object.assign(this.resume, user.attributes.resume)
-            }, function (error) {
-                // 异常处理
-            });            
+            return query.get(user.objectId).then(user => {
+                let resume = user.toJSON().resume
+                return resume
+            })
         },
         saveResume(){
             // 第一个参数是 className，第二个参数是 objectId
-            var user = AV.Object.createWithoutData('User', this.currentUser.id);
+            var user = AV.Object.createWithoutData('User', this.currentUser.objectId);
             // 修改属性
             user.set('resume', this.resume);
             // 保存到云端
@@ -106,12 +111,12 @@ var app = new Vue({
         },
         onLogout(){
             AV.User.logOut()
-            this.currentUser.id = undefined
+            this.currentUser.objectId = undefined
             alert('注销成功')
         },
         onSignIn(){
             AV.User.logIn(this.signIn.email, this.signIn.password).then((loginedUser) => {
-                this.currentUser.id = loginedUser.id
+                this.currentUser.objectId = loginedUser.id
                 this.currentUser.email = loginedUser.attributes.email
                 this.loginVisible = false
             }, function (error) {
@@ -144,9 +149,24 @@ var app = new Vue({
 
 let currentUser = AV.User.current()
 if (currentUser) {
-    console.log(currentUser)
-    app.currentUser.id = currentUser.id
-    app.shareLink = location.origin + location.pathname + '?user_id=' + currentUser.id
-    app.getResume(app.currentUser.id)
+    app.currentUser = currentUser.toJSON()
+    // TODO: 开始没登录，后来登录了怎么获取shareLink
+    app.shareLink = location.origin + location.pathname + '?user_id=' + app.currentUser.objectId
+    app.getResume(app.currentUser).then(resume => {
+        app.resume = resume
+    })
 }
 
+// 获取预览用户的 id
+let search = location.search
+let regex = /user_id=([^&]+)/
+let matches = search.match(regex)
+let userId
+if (matches) {
+  userId = matches[1]
+  app.mode = 'preview'
+  app.getResume({objectId: userId}).then(resume => {
+    app.previewResume = resume
+    console.log(app.previewResume)
+  })
+}
