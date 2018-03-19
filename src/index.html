@@ -122,7 +122,7 @@
         </div>
         <div class="share" v-show="shareVisible">
             <h2>将下列链接分享给面试官</h2>
-            <textarea name="" id="" cols="40" rows="5" readonly resize='none'></textarea>
+            <textarea name="" id="" cols="40" rows="5" readonly resize='none'>{{shareLink}}</textarea>
             <div>
                 <button>复制</button>
                 <button @click="shareVisible = false">取消</button>

@@ -15,5 +15,5 @@
     resize: none;
     margin: 10px 0;
     padding: 10px;
-    wrap: break-all;
+    word-break: break-all;
 }

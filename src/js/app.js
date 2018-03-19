@@ -35,7 +35,8 @@ var app = new Vue({
         signUp: {
             email: '',
             password: '',
-        }
+        },
+        shareLink: '',
     },
     watch: {
        'currentUser.id' : function(val, oldVal){
@@ -143,7 +144,9 @@ var app = new Vue({
 
 let currentUser = AV.User.current()
 if (currentUser) {
+    console.log(currentUser)
     app.currentUser.id = currentUser.id
+    app.shareLink = location.origin + location.pathname + '?user_id=' + currentUser.id
     app.getResume(app.currentUser.id)
 }
 
