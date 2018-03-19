@@ -5,6 +5,7 @@ var app = new Vue({
         signInVisible: true,
         signUpVisible: false,
         loginVisible: false,
+        shareVisible: false,
         currentUser: {
             id: undefined,
             email: '',
