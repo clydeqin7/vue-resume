@@ -38,6 +38,12 @@ var app = new Vue({
             password: '',
         },
         shareLink: '',
+        mode: 'edit' // 'preview'
+    },
+    computed: {
+        displayResume () {
+            return this.mode === 'edit' ? this.resume : this.previewResume
+        }
     },
     watch: {
        'currentUser.objectId' : function(val, oldVal){
@@ -46,10 +52,14 @@ var app = new Vue({
             this.getResume(this.currentUser).then(resume => {
                 this.resume = resume
             })
+            app.shareLink = location.origin + location.pathname + '?user_id=' + app.currentUser.objectId
         }
        },
     },
     methods:{
+        exitPreview () {
+            this.mode = 'edit'
+        },
         removeProject(index){
             this.resume.projects.splice(index, 1)
         },

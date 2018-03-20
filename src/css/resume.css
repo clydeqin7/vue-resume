@@ -50,3 +50,9 @@
 .resume > section.projects > ol  > li > header > .start{
 
 }
+
+main > .exitPreview{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
