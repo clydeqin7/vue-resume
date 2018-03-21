@@ -9,14 +9,22 @@
     <link rel="stylesheet" href="./css/resume.css">
     <link rel="stylesheet" href="./css/editable-span.css">
     <link rel="stylesheet" href="./css/share.css"> 
+    <link rel="stylesheet" href="./css/aside.css">
     <link rel="stylesheet" href="./css/print.css" media="print">   
+<script src="//at.alicdn.com/t/font_599940_cbv58bvfqeabgldi.js"></script>       
 </head>
 <body>
     <div class="page" id="app">
         <aside v-show="mode === 'edit' ">
+            <div class="logo">logo</div>
             <div class="upper">
                 <ul class="actions">
-                    <li><button @click="onSaveClick">保存</button></li>
+                    <li>
+<svg class="icon" aria-hidden="true">
+    <use xlink:href="#icon-save"></use>
+</svg> 
+                        <button @click="onSaveClick">保存</button>
+                    </li>
                     <li><button @click="shareVisible = true">分享</button></li>
                     <li><button @click="print">打印</button></li>
                     <li><button>换肤</button></li>
@@ -131,6 +139,7 @@
             </div>
         </div>
     </div>
+
 <script src="../vendors/av-min.js"></script>
 <script src="./js/av.js"></script>
 <script src="../vendors/vue.min.js"></script>

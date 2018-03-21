@@ -1,0 +1,30 @@
+.page > aside{
+    min-width: 100px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+.page > aside > .logo {
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+}
+.page > aside > .upper{
+    flex-grow: 1;
+}
+.page > aside > .upper  li{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.page > aside > .down {
+    padding-bottom: 5px;
+    text-align: center;
+}
+.page > aside > .upper  li  > svg {
+    margin-right: 5px;
+}
+.page > aside > .upper  li > button{
+    background: #fff;
+    border: none;
+}

@@ -5,31 +5,20 @@ ol, ul{ list-style: none}
 html{font-size: 18px;}
 button{font: inherit;}
 div[v-cloak] {display: none;}
-@media(min-width: 500px){
-    .page{
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        padding: 10px;
-    }
+
+/*fonticon的引用样式*/
+.icon {
+  width: 20px; height: 20px;
+  vertical-align: -0.15em;
+  fill: #15A4FA;
+  overflow: hidden; 
 }
 
-.page > aside{
-    width: 100px;
-    border: 1px solid red;
+.page{
+    min-width: 500px;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-}
-.page > aside > .upper{
-    flex-grow: 1;
-}
-.page > aside > .upper  li{
-    padding: 5px;
-    text-align: center;
-}
-.page > aside > .down {
-    padding-bottom: 5px;
-    text-align: center;
 }
 
 .page > main{
