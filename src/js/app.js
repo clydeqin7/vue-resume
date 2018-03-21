@@ -57,6 +57,9 @@ var app = new Vue({
        },
     },
     methods:{
+        print(){
+            window.print()
+        },
         exitPreview () {
             this.mode = 'edit'
         },

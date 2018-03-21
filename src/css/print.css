@@ -1,0 +1,18 @@
+/*@media print{*/
+/*}*/
+div.page > aside {
+    display: none;
+}
+
+div.page > main {
+    padding: 20px;
+}
+
+div.page > main li.add {
+    display: none;
+}
+
+div.page > main span.removeProject,
+div.page > main span.removeSkill{
+    display: none;
+}
