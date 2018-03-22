@@ -1,10 +1,12 @@
 .page > aside{
     min-width: 100px;
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
+    background-color: #364760;
+    color: #F0F4F6;
 }
 .page > aside > .logo {
+    background-color: #2A394F;
     height: 60px;
     text-align: center;
     line-height: 60px;
@@ -16,15 +18,35 @@
     height: 50px;
     line-height: 50px;
     text-align: center;
+    border-left: 3px solid transparent;
 }
+.page > aside > .upper  li > span{
+    user-select: none;
+}
+
+.page > aside > .upper  li:hover {
+    border-left: 3px solid #15A4FA;
+    background-color: #2A394F;
+    cursor: pointer;
+}
+.page > aside > .upper  li:hover > .icon {
+    fill: #15A4FA;
+}
+
+
 .page > aside > .down {
-    padding-bottom: 5px;
+    background-color: #2A394F;
+    border-top: 3px solid transparent;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
+    user-select: none;
+}
+.page > aside > .down:hover{
+    border-top: 3px solid #15A4FA; 
+    cursor: pointer;
 }
 .page > aside > .upper  li  > svg {
     margin-right: 5px;
 }
-.page > aside > .upper  li > button{
-    background: #fff;
-    border: none;
-}
+

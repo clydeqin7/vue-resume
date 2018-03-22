@@ -10,7 +10,7 @@ div[v-cloak] {display: none;}
 .icon {
   width: 20px; height: 20px;
   vertical-align: -0.15em;
-  fill: #15A4FA;
+  fill: #6382A9;
   overflow: hidden; 
 }
 
@@ -22,10 +22,10 @@ div[v-cloak] {display: none;}
 }
 
 .page > main{
-    border: 1px solid blue;
     flex-grow: 1;
     overflow: auto;
 }
+
 
 
 .login{

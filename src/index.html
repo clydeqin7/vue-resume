@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/share.css"> 
     <link rel="stylesheet" href="./css/aside.css">
     <link rel="stylesheet" href="./css/print.css" media="print">   
-<script src="//at.alicdn.com/t/font_599940_cbv58bvfqeabgldi.js"></script>       
+<script src="//at.alicdn.com/t/font_599940_lj0xx6sgyjt9be29.js"></script>       
 </head>
 <body>
     <div class="page" id="app">
@@ -19,22 +19,41 @@
             <div class="logo">logo</div>
             <div class="upper">
                 <ul class="actions">
-                    <li>
-<svg class="icon" aria-hidden="true">
-    <use xlink:href="#icon-save"></use>
-</svg> 
-                        <button @click="onSaveClick">保存</button>
+                    <li @click="onSaveClick">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-save"></use>
+                        </svg> 
+                        <span >保存</span>
                     </li>
-                    <li><button @click="shareVisible = true">分享</button></li>
-                    <li><button @click="print">打印</button></li>
-                    <li><button>换肤</button></li>
+                    <li>
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-preview"></use>
+                        </svg>                         
+                        <span>预览</span>
+                    </li>
+                    <li @click="print">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-print"></use>
+                        </svg>                         
+                        <span >打印</span>
+                        </li>
+                    <li @click="shareVisible = true">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-share"></use>
+                        </svg>                         
+                        <span >分享</span>
+                    </li>                   
                 </ul>
             </div>
-            <div class="down" v-cloak>
-                <span v-show="currentUser.objectId" @click="onLogout">登出</span>
+            <div v-show="currentUser.objectId"  class="down" v-cloak>
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-exit"></use>
+                 </svg>   
+                <span @click="onLogout">登出</span>
             </div>
         </aside>
         <main>
+            <div class="topNar">xxxxxx</div>
             <button v-show="mode === 'preview'" class="exitPreview" @click="exitPreview" v-cloak>退出预览</button>
             <div class="resume">
                 <section class="profile">
