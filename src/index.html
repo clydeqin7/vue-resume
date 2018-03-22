@@ -30,7 +30,7 @@
                         <svg class="icon" aria-hidden="true">
                             <use xlink:href="#icon-preview"></use>
                         </svg>                         
-                        <span>预览</span>
+                        <span >预览</span>
                     </li>
                     <li @click="print">
                         <svg class="icon" aria-hidden="true">
@@ -54,7 +54,7 @@
             </div>
         </aside>
         <main>
-            <div class="topBar"></div>
+            <div class="topBar" v-show="mode === 'edit'"></div>
             <button v-show="mode === 'preview'" class="exitPreview" @click="exitPreview" v-cloak>退出预览</button>
             <div class="resume">
                 <section class="profile">
@@ -127,8 +127,6 @@
                     <span class="sup" :class="{ active: signUpVisible}"@click="signUpVisible = true; signInVisible = false" >注册</span>
                 </div>
                 <form class="sinForm"  v-show="signInVisible" @submit.prevent="onSignIn">
-                    <h2>登录</h2>
-                    <button @click="loginVisible = false">关闭</button>
                     <div class="row">
                         <label>邮箱</label>
                         <input type="text" v-model="signIn.email">
@@ -138,11 +136,9 @@
                         <input type="password" v-model="signIn.password">
                     </div>
                     <button type="submit">提交</button>
-                    <a href="#" @click="signUpVisible = true; signInVisible = false">注册</a>
+                    <button @click="loginVisible = false">关闭</button>
                 </form>
                 <form class="supForm"  v-show="signUpVisible" @submit.prevent="onSignUp">
-                    <h2>注册</h2>
-                    <button @click="loginVisible = false">关闭</button>
                     <div class="row">
                         <label>邮箱</label>
                         <input type="text" v-model="signUp.email">
@@ -152,7 +148,7 @@
                         <input type="password" v-model="signUp.password">
                     </div>
                     <button type="submit">提交</button>
-                    <a href="#"  @click="signUpVisible = false; signInVisible = true">登录</a>
+                    <button @click="loginVisible = false">关闭</button>
                 </form>                
             </div>      
         </div>

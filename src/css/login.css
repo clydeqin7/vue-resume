@@ -14,11 +14,9 @@
     top:  50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
 }
 
 .login > .form > .formNav{
-    border-radius: 10px 10px 0 0;
 }
 
 .login > .form > .formNav {
@@ -45,7 +43,6 @@
 
 .login > .form > .formNav > span.sin {
     border-left: 3px solid transparent;
-    border-radius: 10px 0 0 0;
 }
 
 .login > .form > .formNav > span.sin.active {
@@ -54,7 +51,6 @@
 
 .login > .form > .formNav > span.sup {
     border-right: 3px solid transparent;
-    border-radius: 0 10px  0 0;
 }
 
 .login > .form > .formNav > span.sup.active {
@@ -63,7 +59,22 @@
 
 .login > .form > .sinForm,
 .login > .form > .supForm{
-    border: 3px solid #15A4FA;
-    border-top: none;
-    border-bottom: none;
+    min-height: 240px;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    text-align: center;
+    color: #fff;
+}
+.login > .form > .sinForm{
+    border-left: 3px solid #15A4FA;
+}
+
+.login > .form > .supForm{
+    border-right: 3px solid #15A4FA;
+
+}
+
+.login > .form > form >.row {
+    padding: 20px 10px 10px;
+    text-align: center;
 }

@@ -10,6 +10,7 @@
     box-shadow: 0px 0px 1px 1px rgba(221,221,221,1);
     padding: 20px 10px 10px;
     background-color: #fff;
+    min-height: 100vh;
 }
 .resume > section > p{
     text-align: center;
