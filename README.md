@@ -92,6 +92,12 @@ css的媒体查询
 <link rel="stylesheet" href="xxx.css" media="print"/> 
 ```
 
+### Vue class控制active
+
+```javascript
+<span class="sin" :class="{ active: signInVisible}" @click="signUpVisible = false; signInVisible = true" >登录</span>
+```
+
 
 
 ## TODO
@@ -108,5 +114,9 @@ css的媒体查询
   }
 ```
 - 开始没登录，后来登录了怎么获取shareLink
+
 - 监控变化显示简历的优化,现在`watch` 里变化的是直接添加到 resume 而没管 previewResume
-- 退出预览再次进入预览、简历编辑时预览
+
+- ~~退出预览再次进入预览~~[D]、预览连接退出预览后编辑再进入预览的显示内容
+
+  ​
