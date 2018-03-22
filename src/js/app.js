@@ -7,7 +7,7 @@ var app = new Vue({
         loginVisible: false,
         shareVisible: false,
         currentUser: {
-            objectId: undefined,
+            objectId: '',
             email: '',
         }, 
         previewResume: {},       
@@ -95,7 +95,7 @@ var app = new Vue({
             // TODO: 页面最开始加载时是否判断用户登录了的
             let currentUser = AV.User.current()
             if (currentUser) {
-                this.currentUser.objectId = currentUser.objectId
+                this.currentUser.objectId = currentUser.id
                 this.saveResume()
             }
             else {
