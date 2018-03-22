@@ -1,0 +1,69 @@
+.login{
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(200, 200, 200, 0.3);
+}
+
+.login > .form{
+    position: absolute;
+    min-width: 400px;
+    min-height: 300px;
+    background: #2A394F;
+    top:  50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.login > .form > .formNav{
+    border-radius: 10px 10px 0 0;
+}
+
+.login > .form > .formNav {
+    width: 100%;
+    height: 60px;
+    background-color: #2A394F;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login > .form > .formNav > span {
+    width: 50%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 22px;
+    background-color: #C3C59E;
+}
+
+.login > .form > .formNav > span.active {
+    background-color: #2A394F;
+    color: #fff;
+}
+
+
+.login > .form > .formNav > span.sin {
+    border-left: 3px solid transparent;
+    border-radius: 10px 0 0 0;
+}
+
+.login > .form > .formNav > span.sin.active {
+    border-left: 3px solid #15A4FA;
+}
+
+.login > .form > .formNav > span.sup {
+    border-right: 3px solid transparent;
+    border-radius: 0 10px  0 0;
+}
+
+.login > .form > .formNav > span.sup.active {
+    border-right: 3px solid #15A4FA;
+}
+
+.login > .form > .sinForm,
+.login > .form > .supForm{
+    border: 3px solid #15A4FA;
+    border-top: none;
+    border-bottom: none;
+}
