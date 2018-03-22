@@ -1,6 +1,6 @@
 # Vue简历制作工具
 
-## l2
+## L2
 
 ### 登录、注册、登出功能
 
@@ -21,7 +21,7 @@
 
 不会显示，直到编译结束。
 
-## l3
+## L3
 
 ### 获取当前是列表中哪个li正在编辑
 
@@ -74,6 +74,22 @@ displayResume () {
 
 ```css
 <editable-span :value="displayResume.name" @edit="onEdit('name', $event)"></editable-span>
+```
+
+
+
+## L4
+
+### 打印功能实现
+
+```javascript
+window.print()
+```
+
+css的媒体查询
+
+```css
+<link rel="stylesheet" href="xxx.css" media="print"/> 
 ```
 
 
