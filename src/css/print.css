@@ -8,6 +8,10 @@ div.page > main {
     padding: 20px;
 }
 
+div.page > main > .resume {
+    box-shadow: none;
+}
+
 div.page > main li.add {
     display: none;
 }
