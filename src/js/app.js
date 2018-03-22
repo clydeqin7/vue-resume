@@ -2,6 +2,7 @@ var app = new Vue({
     el: '#app',
     data:{
         editingName: false,
+        hasPreviewUser: false,
         signInVisible: true,
         signUpVisible: false,
         loginVisible: false,
@@ -57,6 +58,15 @@ var app = new Vue({
        },
     },
     methods:{
+        // TODO:预览界面退出编辑后想看编辑的效果
+        onPreviewClick(){
+            if(this.hasPreviewUser){
+
+            }else{
+             this.previewResume = this.resume
+            }
+           this.mode = "preview"
+        },
         print(){
             window.print()
         },
@@ -177,9 +187,9 @@ let matches = search.match(regex)
 let userId
 if (matches) {
   userId = matches[1]
+  app.hasPreviewUser = true
   app.mode = 'preview'
   app.getResume({objectId: userId}).then(resume => {
     app.previewResume = resume
-    console.log(app.previewResume)
   })
 }
