@@ -53,6 +53,10 @@ var app = new Vue({
        },
     },
     methods:{
+        copyLink(){
+            //TODO: 实现按钮复制链接功能
+            console.log(1)
+        },
         loginedUser: function(data){
             alert('登录成功')
             this.currentUser.objectId = data.objectId
@@ -142,7 +146,6 @@ var app = new Vue({
 })
 
 let currentUser = AV.User.current()
-console.log(currentUser)
 if (currentUser) {
     app.currentUser = currentUser.toJSON()
     // TODO: 开始没登录，后来登录了怎么获取shareLink
