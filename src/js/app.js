@@ -3,8 +3,6 @@ var app = new Vue({
     data:{
         editingName: false,
         hasPreviewUser: false,
-        signInVisible: true,
-        signUpVisible: false,
         loginVisible: false,
         shareVisible: false,
         currentUser: {
@@ -30,14 +28,7 @@ var app = new Vue({
                 {name: '请填写项目名称', link: 'http://...', keywords: '请填写关键词', description: '请详细描述'},
             ]
         },
-        signIn: {
-            email: '',
-            password: '',
-        },
-        signUp: {
-            email: '',
-            password: '',
-        },
+
         shareLink: '',
         mode: 'edit' // 'preview'
     },
@@ -51,13 +42,23 @@ var app = new Vue({
         if(val){
             // TODO:监控变化显示简历的优化
             this.getResume(this.currentUser).then(resume => {
-                this.resume = resume
+            if(resume === '-1'){
+
+            }else{
+                  this.resume = resume
+            }
             })
             app.shareLink = location.origin + location.pathname + '?user_id=' + app.currentUser.objectId
         }
        },
     },
     methods:{
+        loginedUser: function(data){
+            alert('登录成功')
+            this.currentUser.objectId = data.objectId
+            this.currentUser.email = data.email
+            this.loginVisible = false            
+        },
         // TODO:预览界面退出编辑后想看编辑的效果
         onPreviewClick(){
             if(this.hasPreviewUser){
@@ -107,15 +108,14 @@ var app = new Vue({
             if (currentUser) {
                 this.currentUser.objectId = currentUser.id
                 this.saveResume()
-            }
-            else {
+            }else {
                 this.showLogin()
             }
         },
         getResume(user){
             var query = new AV.Query('User');
             return query.get(user.objectId).then(user => {
-                let resume = user.toJSON().resume
+                let resume = user.toJSON().resume ? user.toJSON().resume : '-1'
                 return resume
             })
         },
@@ -137,46 +137,22 @@ var app = new Vue({
             this.currentUser.objectId = undefined
             alert('注销成功')
         },
-        onSignIn(){
-            AV.User.logIn(this.signIn.email, this.signIn.password).then((loginedUser) => {
-                this.currentUser.objectId = loginedUser.id
-                this.currentUser.email = loginedUser.attributes.email
-                this.loginVisible = false
-            }, function (error) {
-                if(error.code === 210){
-                    alert('邮箱和密码不匹配')
-                }else if(erro.code === 211){
-                    alert('该邮箱未注册')
-                }
-            })           
-        },
-        onSignUp(){
-            const user = new AV.User()
-            user.setUsername(this.signUp.email)
-            user.setPassword(this.signUp.password)
-            user.setEmail(this.signUp.email)
-            user.signUp().then((user) => {
-                //TODO: 修改这个代码
-                AV.User.logOut()
-                alert('注册成功，将前往登录界面')
-                this.signUpVisible = false
-                this.signInVisible = true
-            }, (error) => {
-                if(error.code === 203){
-                    alert('此邮箱已经注册')
-                }
-            })            
-        }
+
     }
 })
 
 let currentUser = AV.User.current()
+console.log(currentUser)
 if (currentUser) {
     app.currentUser = currentUser.toJSON()
     // TODO: 开始没登录，后来登录了怎么获取shareLink
     app.shareLink = location.origin + location.pathname + '?user_id=' + app.currentUser.objectId
     app.getResume(app.currentUser).then(resume => {
-        app.resume = resume
+        if(resume === '-1'){
+
+        }else{
+            app.resume = resume
+        }             
     })
 }
 
@@ -190,6 +166,10 @@ if (matches) {
   app.hasPreviewUser = true
   app.mode = 'preview'
   app.getResume({objectId: userId}).then(resume => {
-    app.previewResume = resume
+        if(resume === '-1'){
+
+        }else{
+            app.previewResume = resume
+    }         
   })
 }
