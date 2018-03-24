@@ -98,7 +98,11 @@ css的媒体查询
 <span class="sin" :class="{ active: signInVisible}" @click="signUpVisible = false; signInVisible = true" >登录</span>
 ```
 
+### 组件化应用
 
+**组件的data必须是函数**
+
+父组件通过prop向子组件传递数据，子组件通过emit向父组件发送消息
 
 ## TODO
 
@@ -118,5 +122,7 @@ css的媒体查询
 - 监控变化显示简历的优化,现在`watch` 里变化的是直接添加到 resume 而没管 previewResume
 
 - ~~退出预览再次进入预览~~[D]、预览连接退出预览后编辑再进入预览的显示内容
+
+- 分享框的复制按钮将链接复制到粘贴板，但不是复制`textarea`里的链接内容
 
   ​
