@@ -38,7 +38,7 @@
                         </svg>                         
                         <span >打印</span>
                         </li>
-                    <li @click="shareVisible = true">
+                    <li v-show="currentUser.objectId" @click="shareVisible = true">
                         <svg class="icon" aria-hidden="true">
                             <use xlink:href="#icon-share"></use>
                         </svg>                         
@@ -54,7 +54,7 @@
             </div>
         </aside>
         <main>
-            <div class="topBar" v-show="mode === 'edit'"></div>
+            <div class="topBar" v-show="mode === 'edit'" v-cloak></div>
             <button v-show="mode === 'preview'" class="exitPreview" @click="exitPreview" v-cloak>退出预览</button>
             <div class="resume">
                 <section class="profile">
