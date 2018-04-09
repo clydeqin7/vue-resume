@@ -11,7 +11,7 @@ var app = new Vue({
         }, 
         previewResume: {},       
         resume:{
-            name: '姓名1',
+            name: '姓名',
             gender: '男',
             birthday: '1990.01',
             phone: '13800138001',
