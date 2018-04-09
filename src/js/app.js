@@ -53,6 +53,9 @@ var app = new Vue({
        },
     },
     methods:{
+        xxxxx(){
+            console.log('1')
+        },
         copyLink(){
             //TODO: 实现按钮复制链接功能
             console.log(1)

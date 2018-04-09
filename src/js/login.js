@@ -19,6 +19,8 @@ Vue.component('login', {
                         alert('邮箱和密码不匹配')
                     }else if(erro.code === 211){
                         alert('该邮箱未注册')
+                    }else{
+                        alert('出现未知错误，请稍后再试')
                     }
                 })           
             },
