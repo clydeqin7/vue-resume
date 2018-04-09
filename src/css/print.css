@@ -1,11 +1,10 @@
+::-webkit-scrollbar{
+  display:none;
+}
 /*@media print{*/
 /*}*/
 div.page > aside {
     display: none;
-}
-
-div.page > main {
-    padding: 20px;
 }
 
 div.page > main > .resume {
@@ -18,5 +17,9 @@ div.page > main li.add {
 
 div.page > main span.removeProject,
 div.page > main span.removeSkill{
+    display: none;
+}
+
+.topBar{
     display: none;
 }
