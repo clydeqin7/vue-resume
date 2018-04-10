@@ -11,7 +11,20 @@ Vue.component('login', {
                 email: '',
                 password: '',
             },  
-            onSignIn(){
+ 
+        }
+    },
+    methods: {
+        checkXXX(str){
+            let trimedStr = str.trim()
+            if(trimedStr === '' || trimedStr === null || trimedStr === undefined){
+                return false
+            }else{
+                return true
+            }
+        },
+        onSignIn(){
+            if(this.checkXXX(this.signIn.email) || this.checkXXX(this.signIn.password)){
                 AV.User.logIn(this.signIn.email, this.signIn.password).then((loginedUser) => {
                     this.$emit('logined', loginedUser.toJSON() )
                 }, function (error) {
@@ -23,8 +36,13 @@ Vue.component('login', {
                         alert('出现未知错误，请稍后再试')
                     }
                 })           
-            },
-            onSignUp(){
+            }else{
+                alert('请填写完整内容')
+                return
+            }
+        },
+        onSignUp(){
+            if(this.checkXXX(this.signIn.email) || this.checkXXX(this.signIn.password)){
                 const user = new AV.User()
                 user.setUsername(this.signUp.email)
                 user.setPassword(this.signUp.password)
@@ -40,8 +58,13 @@ Vue.component('login', {
                         alert('此邮箱已经注册')
                     }
                 })            
-            }                               
-        }
+            } else {
+                alert('请填写完整内容')
+                return
+            }
+        },
+
+                             
     },
     template: `
         <div class="login"  v-cloak>
@@ -60,7 +83,7 @@ Vue.component('login', {
                         <input type="password" v-model="signIn.password">
                     </div>
                     <button type="submit">提交</button>
-                    <button @click="$emit('closelogin')">关闭</button>
+                    <button @click="$emit('closelogin')" type="button">关闭</button>
                 </form>
                 <form class="supForm"  v-show="signUpVisible" @submit.prevent="onSignUp">
                     <div class="row">
@@ -72,7 +95,7 @@ Vue.component('login', {
                         <input type="password" v-model="signUp.password">
                     </div>
                     <button type="submit">提交</button>
-                    <button @click="$emit('closelogin')">关闭</button>
+                    <button @click="$emit('closelogin')" type="button">关闭</button>
                 </form>                
             </div>      
         </div>    

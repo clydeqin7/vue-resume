@@ -143,8 +143,7 @@ var app = new Vue({
             AV.User.logOut()
             this.currentUser.objectId = undefined
             alert('注销成功')
-        },
-
+        }, 
     }
 })
 

@@ -121,7 +121,7 @@
             </div>
         </main>
         <share v-show="shareVisible"  @closeshare="shareVisible = false" :sharelink="shareLink"  @copylink="copyLink" v-cloak></share>
-        <login v-show="loginVisible"  @logined="loginedUser" @closelogin="xxxxx"></login>  
+        <login v-show="loginVisible"  @logined="loginedUser" @closelogin="loginVisible = false"></login>  
     </div>
 
 <script src="../vendors/av-min.js"></script>
